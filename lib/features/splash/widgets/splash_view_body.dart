@@ -4,8 +4,28 @@ import 'package:holla/core/Utils/app_images.dart';
 import 'package:holla/features/splash/widgets/circular_gradiant_opacity_container.dart';
 import 'package:holla/features/splash/widgets/gradient_container.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    faddingAnimation();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +78,9 @@ class SplashViewBody extends StatelessWidget {
               ),
               SizedBox(
                 width: screenWidth * 0.45,
-                child: Image.asset(AppImages.appPLogo),
+                child: Opacity(
+                    opacity: animationController.value,
+                    child: Image.asset(AppImages.appPLogo)),
               ),
             ],
           ),
@@ -85,5 +107,15 @@ class SplashViewBody extends StatelessWidget {
         ),
       ]),
     );
+  }
+
+  void faddingAnimation() {
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 800));
+    animationController.addListener(() {
+      setState(() {});
+    });
+    animationController.forward();
+    animationController.repeat(reverse: true);
   }
 }
