@@ -7,6 +7,7 @@ import 'package:holla/features/auth/choice%20between%20registration%20and%20logi
 import 'package:holla/features/auth/choice%20between%20registration%20and%20login/widgets/navigator_text.dart';
 import 'package:holla/features/auth/login/views/password_recovery.dart';
 import 'package:holla/features/auth/login/widgets/custom_text_form_field.dart';
+import 'package:holla/features/home/views/home_view.dart';
 import 'package:holla/features/splash/widgets/gradient_container.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -110,7 +111,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                       GradiantButton(
                           screenWidth: screenWidth,
                           buttonLabel: "تسجيل الدخول",
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, HomeView.id);
+                          },
                           buttonRatio: 0.6),
                       const SizedBox(
                         height: 10,

@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  intl_phone_field: ^3.1.0
+  another_carousel_pro: ^1.0.0
 
 
 
